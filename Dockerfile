@@ -16,10 +16,11 @@ RUN service mysql start
 # Copy the requirements.txt file and install dependencies
 COPY ./requirements.txt .
 
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt \
-    && pip install gunicorn \
+RUN pip install --upgrade pip \
+    && pip install -r requirements.txt \
     && rm -rf /root/.cache
+#    && pip install gunicorn \ this is for ngix
+
 
 # Copy the rest of the application code
 COPY . .
