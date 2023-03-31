@@ -6,8 +6,8 @@ RUN mkdir /app
 WORKDIR /app
 
 # dependencies
-RUN apt-get update \
-&& apt-get install -y mariadb-server mariadb-client libmariadb-dev-compat \
+RUN sudo apt-get update \
+    && sudo apt-get install -y default-libmysqlclient-dev
 
 # Copy the requirements.txt file and install dependencies
 COPY ./requirements.txt .
