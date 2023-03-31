@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: McyangBackEND/Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=mcyangdb
+      - DB_USER=mcyang
+      - DB_PASSWORD=mcyang
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: mcyangdb
+      MYSQL_USER: mcyang
+      MYSQL_PASSWORD: mcyang
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
