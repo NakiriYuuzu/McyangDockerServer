@@ -1,18 +1,5 @@
-version: '3'
+version: '3.3'
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "80:80"
-    depends_on:
-      - db
-    environment:
-      - DB_HOST=db
-      - DB_NAME=mcyangdb
-      - DB_USER=mcyang
-      - DB_PASSWORD=mcyang
   db:
     image: mariadb
     restart: always
@@ -23,5 +10,19 @@ services:
       MYSQL_ROOT_PASSWORD: admin
     volumes:
       - db_data:/var/lib/mysql
+  web:
+    build:
+      dockerfile: Dockerfile
+#    command:
+#      - python manage.py migrate && python manage.py runserver 0.0.0.0:80
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=mcyangdb
+      - DB_USER=mcyang
+      - DB_PASSWORD=mcyang
 volumes:
   db_data:

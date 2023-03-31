@@ -85,13 +85,14 @@ WSGI_APPLICATION = 'McyangBackEND.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mcyangtest',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+        'NAME': 'mcyangdb',
+        'USER': 'mcyang',
+        'PASSWORD': 'mcyang',
+        'HOST': 'db',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'mssql',

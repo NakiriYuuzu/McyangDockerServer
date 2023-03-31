@@ -25,4 +25,4 @@ COPY . .
 EXPOSE 80
 
 # Start the application
-CMD [ "bash", "-c", "source venv/bin/activate && python manage.py runserver 0.0.0.0:80" ]
+CMD [ "bash", "-c", "source venv/bin/activate && python manage.py migrate && python manage.py runserver 0.0.0.0:80" ]
