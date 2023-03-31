@@ -15,7 +15,7 @@ RUN python -m venv venv && \
     pip install -r requirements.txt
 
 # Copy the rest of the application code
-COPY McyangBackEND .
+COPY . .
 
 # Expose port 80
 EXPOSE 80
