@@ -1,0 +1,1589 @@
+{
+	"info": {
+		"_postman_id": "b779a89d-3eb1-4fc1-9d6d-8405496473dd",
+		"name": "McyangAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11237707"
+	},
+	"item": [
+		{
+			"name": "Login - for Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "00000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Teacher",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "T_email",
+							"value": "McyangTest01",
+							"type": "text"
+						},
+						{
+							"key": "T_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Course - List",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "T_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/CourseList/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"CourseList",
+						""
+					]
+				},
+				"description": "\\*   **PICK ONCE**\n    \\*   S_id\n    \\*   T_id"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "S_email",
+			"value": "studentTest01",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "S_password",
+			"value": "0000",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "T_email",
+			"value": "McyangTest01",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "T_password",
+			"value": "0000",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "S_id",
+			"value": "1",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "T_id",
+			"value": "1",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
