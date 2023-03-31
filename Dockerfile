@@ -7,7 +7,10 @@ WORKDIR /app
 
 # dependencies
 RUN apt-get update \
-    && apt-get install -y default-libmysqlclient-dev
+    && apt-get install -y default-libmysqlclient-dev \
+    && apt-get install -y gcc \
+    && apt-get install -y build-essential \
+    && apt-get install -y mariadb-server mariadb-client libmariadb-dev-compat \
 
 # Copy the requirements.txt file and install dependencies
 COPY ./requirements.txt .
