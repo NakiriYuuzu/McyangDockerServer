@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   db:
-    image: mariadb:latest
+    image: mariadb
     restart: always
     environment:
       MYSQL_DATABASE: mcyangdb
@@ -11,6 +11,8 @@ services:
       MYSQL_ROOT_PASSWORD: admin
     volumes:
       - db_data:/var/lib/mysql
+    ports:
+        - "3306:3306"
 
   web:
     build:
