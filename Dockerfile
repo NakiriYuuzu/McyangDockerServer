@@ -2,12 +2,8 @@
 FROM python:3.9-slim-buster
 
 # Set the working directory
-<<<<<<< HEAD
 RUN mkdir /app
 WORKDIR /app
-=======
-WORKDIR /home/"$(whoami)"/McyangBackEND
->>>>>>> dfb79ec06b2709bcb734b521482e9b72d699ebd1
 
 # dependencies
 
