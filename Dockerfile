@@ -6,9 +6,12 @@ RUN mkdir /app
 WORKDIR /app
 
 # dependencies
+RUN apt-get update \
+&& apt-get install -y mariadb-server mariadb-client libmariadb-dev-compat \
 
 # Copy the requirements.txt file and install dependencies
 COPY ./requirements.txt .
+
 RUN python -m venv venv && \
     . venv/bin/activate && \
     pip install --upgrade pip && \
