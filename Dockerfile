@@ -16,20 +16,16 @@ RUN service mysql start
 # Copy the requirements.txt file and install dependencies
 COPY ./requirements.txt .
 
-RUN python -m venv venv && \
-    . venv/bin/activate && \
-    pip install --upgrade pip && \
-    pip install -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt \
+    && pip install gunicorn \
+    && rm -rf /root/.cache
 
 # Copy the rest of the application code
 COPY . .
-
-# Run database migrations
-RUN . venv/bin/activate && \
-    python manage.py migrate
 
 # Expose port 80
 EXPOSE 80
 
 # Start the application
-CMD [ "bash", "-c", "source venv/bin/activate && python manage.py runserver 0.0.0.0:80" ]
+CMD [ "bash", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:80" ]
