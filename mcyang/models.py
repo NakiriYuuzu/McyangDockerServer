@@ -56,6 +56,9 @@ class McyangCourseRecord(models.Model):
     S_id = models.ForeignKey(McyangStudent, on_delete=models.CASCADE, to_field="S_id")
     crtTime = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f'CR_id: {self.CR_id}   CourseName: {self.C_id.C_name}   StudentName: {self.S_id.S_name}'
+
     class Meta:
         db_table = 'mc_courserecord'
 
