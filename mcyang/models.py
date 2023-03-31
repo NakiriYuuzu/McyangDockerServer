@@ -8,8 +8,11 @@ class McyangTeacher(models.Model):
     T_name = models.TextField(max_length=30)
     T_email = models.CharField(max_length=50, unique=True)
     T_password = models.TextField(max_length=50)
-    T_image = models.ImageField(upload_to='img_teacher/')
+    T_image = models.ImageField(upload_to='img_teacher/', blank=True, null=True)
     crtTime = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'T_id: {self.T_id}   TeacherName: {self.T_name}'
 
     class Meta:
         unique_together = (('T_id', 'T_email'),)
@@ -21,8 +24,11 @@ class McyangStudent(models.Model):
     S_name = models.TextField(max_length=30)
     S_email = models.CharField(max_length=50, unique=True)
     S_password = models.TextField(max_length=50)
-    S_image = models.ImageField(upload_to='img_student/')
+    S_image = models.ImageField(upload_to='img_student/', blank=True, null=True)
     crtTime = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'S_id: {self.S_id}   StudentName: {self.S_name}'
 
     class Meta:
         db_table = 'mc_student'
@@ -33,8 +39,11 @@ class McyangCourse(models.Model):
     C_id = models.AutoField(primary_key=True, default=1)
     T_id = models.ForeignKey(McyangTeacher, on_delete=models.CASCADE, to_field="T_id")
     C_name = models.TextField(max_length=30)
-    C_image = models.ImageField(upload_to='img_course/')
+    C_image = models.ImageField(upload_to='img_course/', blank=True, null=True)
     crtTime = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'C_id: {self.C_id}   CourseName: {self.C_name}'
 
     class Meta:
         db_table = 'mc_course'
