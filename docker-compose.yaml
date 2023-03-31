@@ -23,7 +23,7 @@ services:
     depends_on:
       - db
     environment:
-      - DB_HOST=db
+      - DB_HOST='%'
       - DB_NAME=mcyangdb
       - DB_USER=mcyang
       - DB_PASSWORD=mcyang
