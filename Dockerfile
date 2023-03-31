@@ -27,5 +27,9 @@ COPY . .
 # Expose port 80
 EXPOSE 80
 
+# Entrypoint
+ENTRYPOINT [ "/bin/bash", "entrypoint.sh" ]
+# ENTRYPOINT ["bash", "entrypoint.sh"]
+
 # Start the application
-CMD [ "bash", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:80" ]
+# CMD [ "bash", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:80" ]

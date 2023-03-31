@@ -15,17 +15,16 @@ services:
         - "3306:3306"
 
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-#    command:
-#      - python manage.py migrate
-#      - python manage.py runserver 0.0.0.0:80
+    build: .
+    command: python manage.py runserver 0.0.0.0:80
     ports:
       - "80:80"
+    volumes:
+      - .:/app
     depends_on:
       - db
     environment:
+      - DB_HOST=db
       - DB_NAME=mcyangdb
       - DB_USER=mcyang
       - DB_PASSWORD=mcyang
