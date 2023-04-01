@@ -66,6 +66,9 @@ docker-compose down
 # 設定 django Admin
 docker-compose exec web python manage.py createsuperuser
 
-# Docker 進入容器
-docker-compose exec [請看docker-compose.yml 内容有 db 和 web] bash
+# Docker 其他指令
+docker-compose exec [請看docker-compose.yml 内容有 db 和 web] bash # 進入容器
+docker-compose ps # 查看容器狀態
 ```
+
+### 如啓動失敗，請在啓動一次
