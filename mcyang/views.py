@@ -17,8 +17,16 @@ def home(request):
 
 # TODO:Create your Api Here[tableName->Function].
 
+
 @csrf_exempt  # TODO: 登入驗證
 def login(request):
+    """
+    登入驗證：
+        1.學生登入
+            1.1.帳號密碼正確
+        2.老師登入
+            2.1.帳號密碼正確
+    """
     s_email = request.POST.get('S_email')
     s_password = request.POST.get('S_password')
     t_email = request.POST.get('T_email')
@@ -56,6 +64,11 @@ def login(request):
 
 @csrf_exempt  # TODO: 課程列表
 def course_list(request):
+    """
+    課程列表：
+        1.學生課程列表
+        2.老師課程列表
+    """
     s_id = request.POST.get('S_id')
     t_id = request.POST.get('T_id')
     print(s_id, t_id)
@@ -98,6 +111,10 @@ def course_list(request):
 
 @csrf_exempt
 def course_sign_list(request):
+    """
+    課程簽到列表：
+    :param request: ?id=1
+    """
     sign_id = request.GET.get('id', '')
     print(sign_id)
     data = []
@@ -124,6 +141,11 @@ def course_sign_list(request):
 
 @csrf_exempt
 def course_signup(request):
+    """
+    課程簽到：
+    1. 學生簽到
+    :param request: S_id, Sign_id
+    """
     s_id = request.POST.get('S_id')
     sign_id = request.POST.get('Sign_id')
     print(s_id, sign_id)
@@ -180,6 +202,12 @@ def course_signup(request):
 
 @csrf_exempt
 def course_create(request):
+    """
+    新增課程：
+    1. 新增課程
+    2. 修改課程時間
+    :param request: C_name, T_id, C_id
+    """
     c_name = request.POST.get("C_name")
     t_id = request.POST.get("T_id")
     c_id = request.POST.get("C_id")
@@ -216,6 +244,12 @@ def course_create(request):
 
 @csrf_exempt
 def sign_create(request):
+    """
+    新增簽到：
+    :param request: C_name, T_id
+    補簽簽到：
+    :param request: Sign_id
+    """
     c_name = request.POST.get("C_name")
     t_id = request.POST.get("T_id")
     sign_id = request.POST.get("Sign_id")
@@ -275,6 +309,10 @@ def sign_create(request):
 
 @csrf_exempt
 def sign_record_list(request):
+    """
+    簽到紀錄：
+    :param request: Sign_id
+    """
     sign_id = request.GET.get('Sign_id', '')
     data = []
 
@@ -302,6 +340,12 @@ def sign_record_list(request):
 
 @csrf_exempt
 def race_create(request):
+    """
+    新增搶答：
+    :param request: C_id, Race_doc
+    結束搶答：
+    :param request: Race_id, Status
+    """
     c_id = request.POST.get("C_id")
     race_doc = request.POST.get("Race_doc")
     race_id = request.POST.get("Race_id")
@@ -356,6 +400,12 @@ def race_create(request):
 
 @csrf_exempt  # 學生用搶答
 def race_list_create(request):
+    """
+    學生搶答
+    :param request: Race_id, S_id, S_name
+    批改學生
+    :param request: S_id, S_name, Answer
+    """
     s_id = request.POST.get("S_id")
     s_name = request.POST.get("S_name")
     r_id = request.POST.get("Race_id")
@@ -422,6 +472,10 @@ def race_list_create(request):
 
 @csrf_exempt
 def race_answer_list(request):
+    """
+    搶答題目
+    :param request: Race_id
+    """
     race_id = request.GET.get('Race_id', '')
     data = {}
 
@@ -440,6 +494,12 @@ def race_answer_list(request):
 
 @csrf_exempt
 def race_list_list(request):
+    """
+    學生搶答記錄:
+    :param request: Race_id
+    列出該學生回答對錯:
+    :param request: S_id, Race_id
+    """
     race_id = request.GET.get('Race_id', '')
     sid = request.GET.get('S_id', '')
     data = []
@@ -472,6 +532,10 @@ def race_list_list(request):
 
 @csrf_exempt  # TeamDesc[主要] team[隊長](可以用來當聊天室) teamMember[組員]
 def team_desc_create(request):
+    """
+    創建群組
+    :param request: C_id, Doc, Total, Limit
+    """
     course_id = request.POST.get('C_id')
     doc = request.POST.get('Doc')
     total = request.POST.get('Total')
@@ -501,7 +565,14 @@ def team_desc_create(request):
 
 @csrf_exempt  # [ID]欄位可以當成聊天室 [Group_number]欄位可以用於判斷 0 = 未選上， 1 = 選上
 def team_leader_create(request):
-    leader_sid = request.POST.get('S_id')
+    """
+    參數TeamDesc_id & User = 最終確認隊長。
+
+    參數TeamLeader_id & TeamDesc_id & Group_number & User = 選擇隊長。
+
+    參數 S_id & TeamDesc_id & User = 送出隊長請求。
+    """
+    student_sid = request.POST.get('S_id')
     teamdesc_id = request.POST.get('TeamDesc_id')
     group_num = request.POST.get('Group_number')
     user = request.POST.get('User')
@@ -509,15 +580,15 @@ def team_leader_create(request):
     data = {}
 
     if request.method == 'POST':
-        if leader_sid and teamdesc_id and user and not group_num and not teamleader_id:
-            check_duplicate = McyangTeam.objects.filter(TD_id_id=teamdesc_id, Leader_id_id=leader_sid).count()
+        if student_sid and teamdesc_id and user and not group_num and not teamleader_id:
+            check_duplicate = McyangTeam.objects.filter(TD_id_id=teamdesc_id, Leader_id_id=student_sid).count()
             if check_duplicate == 0:
                 try:
                     with transaction.atomic():
                         status = HTTP_200_OK
                         seq_no = McyangTeam.objects.filter().count() + 1
                         insert = McyangTeam.objects.create(T_id=seq_no, Group_number=0,
-                                                           Leader_id_id=leader_sid,
+                                                           Leader_id_id=student_sid,
                                                            TD_id_id=teamdesc_id)
                         data['TeamLeader_id'] = insert.T_id
 
@@ -540,7 +611,7 @@ def team_leader_create(request):
             else:
                 status = HTTP_406_NOT_ACCEPTABLE  # 不可重複選取隊長
 
-        elif teamdesc_id and teamleader_id and group_num and user and not leader_sid:
+        elif teamdesc_id and teamleader_id and group_num and user and not student_sid:
             try:
                 with transaction.atomic():
                     status = HTTP_200_OK
@@ -584,7 +655,7 @@ def team_leader_create(request):
             except Exception as e:
                 status = HTTP_417_EXPECTATION_FAILED
                 print(e)
-        elif teamdesc_id and user and not teamleader_id and not leader_sid and not group_num:
+        elif teamdesc_id and user and not teamleader_id and not student_sid and not group_num:
             status = HTTP_200_OK
             channel_layer = get_channel_layer()
             async_to_sync(channel_layer.group_send)(
@@ -608,6 +679,11 @@ def team_leader_create(request):
 
 @csrf_exempt
 def team_member_create(request):
+    """
+    參數 S_id & TeamLeader_id & User = 送出組員申請。
+
+    參數 TeamDesc_id & User = 確認組成群組。
+    """
     member_sid = request.POST.get('S_id')
     teamleader_id = request.POST.get('TeamLeader_id')
     teamdesc_id = request.POST.get('TeamDesc_id')
@@ -694,6 +770,11 @@ def team_member_create(request):
 
 @csrf_exempt
 def team_leader_list(request):
+    """
+    參數TeamDesc_id：列出該團隊的隊長。
+
+    參數TeamLeader_id：查詢是否是隊長，是 Status = 200
+    """
     teamdesc_id = request.GET.get('TeamDesc_id', '')
     teamleader_id = request.GET.get('TeamLeader_id', '')
     data = []
@@ -728,6 +809,13 @@ def team_leader_list(request):
 
 @csrf_exempt
 def team_member_list(request):
+    """
+    參數TeamDesc_id：列出該群組的隊長和總人數。
+
+    參數TeamLeader_id：列出該組長的隊員。
+
+    參數TeamDesc_id & TeamLeader_id：列出誰是隊長誰是隊員。
+    """
     teamdesc_id = request.GET.get('TeamDesc_id', '')
     teamleader_id = request.GET.get('TeamLeader_id', '')
     data = []
@@ -773,6 +861,13 @@ def team_member_list(request):
 
 @csrf_exempt
 def team_list(request):
+    """
+    參數TeamDesc_id：列出該群組的所有人。
+
+    參數C_id：列出該課程所有群組。
+
+    參數S_id：列出該學生在的群組，是否是組長。
+    """
     teamdesc_id = request.GET.get('TeamDesc_id', '')
     course_id = request.GET.get('C_id', '')
     s_id = request.GET.get('S_id', '')
@@ -787,13 +882,15 @@ def team_list(request):
                                             'where td.TD_id = %s', [teamdesc_id])
             for i in leader:
                 member_list = []
-                member = McyangTeamMember.objects.raw('select distinct tm.*, tl.Leader_id_id, td.TD_doc from mc_teammember tm '
-                                                      'left join mc_team tl on tl.T_id = tm.T_id_id and tl.Group_number = 1 '
-                                                      'left join mc_teamdesc td on td.TD_id = tl.TD_id_id and td.TD_status = 1 '
-                                                      'where tl.T_id = %s', [i.T_id])
+                member = McyangTeamMember.objects.raw(
+                    'select distinct tm.*, tl.Leader_id_id, td.TD_doc from mc_teammember tm '
+                    'left join mc_team tl on tl.T_id = tm.T_id_id and tl.Group_number = 1 '
+                    'left join mc_teamdesc td on td.TD_id = tl.TD_id_id and td.TD_status = 1 '
+                    'where tl.T_id = %s', [i.T_id])
                 for j in member:
                     member_list.append({'S_id': j.S_id_id, 'S_name': McyangStudent.objects.get(S_id=j.S_id_id).S_name})
-                data.append({'TeamDesc_id': i.TD_id_id, 'T_id': i.T_id, 'S_id': i.Leader_id_id, 'S_name': McyangStudent.objects.get(S_id=i.Leader_id_id).S_name, 'Member': member_list})
+                data.append({'TeamDesc_id': i.TD_id_id, 'T_id': i.T_id, 'S_id': i.Leader_id_id,
+                             'S_name': McyangStudent.objects.get(S_id=i.Leader_id_id).S_name, 'Member': member_list})
         elif course_id and not teamdesc_id and not s_id:
             status = HTTP_200_OK
             select = McyangTeamDesc.objects.filter(C_id_id=course_id, TD_status=1).order_by('-crtTime')
@@ -802,13 +899,15 @@ def team_list(request):
         elif s_id and not teamdesc_id:
             status = HTTP_200_OK
             if McyangTeamMember.objects.filter(S_id_id=s_id).exists():
-                select = McyangTeamMember.objects.raw('select distinct tm.*, tl.Leader_id_id, td.TD_id, td.TD_doc from mc_teammember tm '
-                                                      'inner join mc_team tl on tm.T_id_id = tl.T_id and tl.Group_number = 1 '
-                                                      'inner join mc_teamdesc td on td.TD_id = tl.TD_id_id and td.TD_status = 1 '
-                                                      'where tm.S_id_id = %s', [s_id])
+                select = McyangTeamMember.objects.raw(
+                    'select distinct tm.*, tl.Leader_id_id, td.TD_id, td.TD_doc from mc_teammember tm '
+                    'inner join mc_team tl on tm.T_id_id = tl.T_id and tl.Group_number = 1 '
+                    'inner join mc_teamdesc td on td.TD_id = tl.TD_id_id and td.TD_status = 1 '
+                    'where tm.S_id_id = %s', [s_id])
                 for i in select:
                     name = McyangStudent.objects.get(S_id=i.S_id_id).S_name
-                    data.append({'TeamDesc_id': i.TD_id, 'TeamLeader_id': i.T_id_id, 'Doc': i.TD_doc, 'S_id': i.S_id_id, 'S_name': name, 'IsLeader': 'false'})
+                    data.append({'TeamDesc_id': i.TD_id, 'TeamLeader_id': i.T_id_id, 'Doc': i.TD_doc, 'S_id': i.S_id_id,
+                                 'S_name': name, 'IsLeader': 'false'})
             if McyangTeam.objects.filter(Leader_id_id=s_id).exists():
                 select = McyangTeam.objects.raw('select distinct tl.*, tl.Leader_id_id, td.TD_doc from mc_team tl '
                                                 'inner join mc_teammember tm on tm.T_id_id = tl.T_id '
@@ -816,7 +915,9 @@ def team_list(request):
                                                 'where tl.Group_number = 1 and tl.Leader_id_id = %s', [s_id])
                 for i in select:
                     name = McyangStudent.objects.get(S_id=i.Leader_id_id).S_name
-                    data.append({'TeamDesc_id': i.TD_id_id, 'TeamLeader_id': i.T_id, 'Doc': i.TD_doc, 'S_id': i.Leader_id_id, 'S_name': name, 'IsLeader': 'true'})
+                    data.append(
+                        {'TeamDesc_id': i.TD_id_id, 'TeamLeader_id': i.T_id, 'Doc': i.TD_doc, 'S_id': i.Leader_id_id,
+                         'S_name': name, 'IsLeader': 'true'})
             data.sort(key=lambda x: -x['TeamDesc_id'])
         else:
             status = HTTP_400_BAD_REQUEST
@@ -828,6 +929,9 @@ def team_list(request):
 
 @csrf_exempt
 def team_chat_create(request):
+    """
+    參數 TeamDesc_id & Chat_title = 建立群組聊天室
+    """
     teamdesc_id = request.POST.get('TeamDesc_id')
     chat_title = request.POST.get('Chat_title')
     print(teamdesc_id, chat_title)
@@ -846,8 +950,11 @@ def team_chat_create(request):
                         for i in leader:
                             seq_no = McyangTeamChat.objects.filter().count() + 1
                             insert = McyangTeamChat.objects.create(GroupChat_id=seq_no, TeamLeader_id_id=i.T_id,
-                                                                   TeamDesc_id_id=i.TD_id_id, ChatRoom=chat_title, Course_id=course_id, status=True)
-                            data.append({'GroupChat_id': insert.GroupChat_id, 'ChatTitle': insert.ChatRoom, 'TeamLeader_id': insert.TeamLeader_id.T_id, 'S_name': insert.TeamLeader_id.Leader_id.S_name, 'CrtTime': insert.crtTime})
+                                                                   TeamDesc_id_id=i.TD_id_id, ChatRoom=chat_title,
+                                                                   Course_id=course_id, status=True)
+                            data.append({'GroupChat_id': insert.GroupChat_id, 'ChatTitle': insert.ChatRoom,
+                                         'TeamLeader_id': insert.TeamLeader_id.T_id,
+                                         'S_name': insert.TeamLeader_id.Leader_id.S_name, 'CrtTime': insert.crtTime})
 
                 except Exception as e:
                     status = HTTP_417_EXPECTATION_FAILED
@@ -864,8 +971,13 @@ def team_chat_create(request):
                                                             'where td.TD_id = %s', [teamdesc_id])
                             for i in leader:
                                 seq_no = McyangTeamChat.objects.filter().count() + 1
-                                insert = McyangTeamChat.objects.create(GroupChat_id=seq_no, TeamLeader_id_id=i.T_id, TeamDesc_id_id=i.TD_id_id, ChatRoom=chat_title, Course_id=course_id, status=True)
-                                data.append({'GroupChat_id': insert.GroupChat_id, 'ChatTitle': insert.ChatRoom, 'TeamLeader_id': insert.TeamLeader_id.T_id, 'S_name': insert.TeamLeader_id.Leader_id.S_name, 'CrtTime': insert.crtTime})
+                                insert = McyangTeamChat.objects.create(GroupChat_id=seq_no, TeamLeader_id_id=i.T_id,
+                                                                       TeamDesc_id_id=i.TD_id_id, ChatRoom=chat_title,
+                                                                       Course_id=course_id, status=True)
+                                data.append({'GroupChat_id': insert.GroupChat_id, 'ChatTitle': insert.ChatRoom,
+                                             'TeamLeader_id': insert.TeamLeader_id.T_id,
+                                             'S_name': insert.TeamLeader_id.Leader_id.S_name,
+                                             'CrtTime': insert.crtTime})
 
                     except Exception as e:
                         status = HTTP_417_EXPECTATION_FAILED
@@ -882,6 +994,17 @@ def team_chat_create(request):
 
 @csrf_exempt
 def team_chat_list(request):
+    """
+    參數TeamDesc_id：列出該聊天室。
+
+    參數C_id：列出該課程所有聊天室。
+
+    參數TeamDesc_id & C_id：聊天室主題。
+
+    參數TeamDesc_id & ChatTitle：列出詳細資訊的聊天室。
+
+    參數 TeamLeader_id：列出該隊長所在的聊天室。
+    """
     course_id = request.GET.get('C_id', '')
     teamdesc_id = request.GET.get('TeamDesc_id', '')
     teamleader_id = request.GET.get('TeamLeader_id', '')
@@ -893,13 +1016,17 @@ def team_chat_list(request):
             status = HTTP_200_OK
             select = McyangTeamChat.objects.filter(Course_id=course_id)
             for i in select:
-                data.append({'GroupChat_id': i.GroupChat_id, 'TeamLeader_id': i.TeamLeader_id.T_id, 'S_name': i.TeamLeader_id.Leader_id.S_name, 'ChatTitle': i.ChatRoom, 'CrtTime': i.crtTime.date(), 'TeamDesc_id': i.TeamDesc_id.TD_id})
+                data.append({'GroupChat_id': i.GroupChat_id, 'TeamLeader_id': i.TeamLeader_id.T_id,
+                             'S_name': i.TeamLeader_id.Leader_id.S_name, 'ChatTitle': i.ChatRoom,
+                             'CrtTime': i.crtTime.date(), 'TeamDesc_id': i.TeamDesc_id.TD_id})
 
         elif teamdesc_id and not course_id and not chat_title:
             status = HTTP_200_OK
             select = McyangTeamChat.objects.filter(TeamDesc_id=teamdesc_id).distinct()
             for i in select:
-                data.append({'GroupChat_id': i.GroupChat_id, 'TeamLeader_id': i.TeamLeader_id.T_id, 'S_name': i.TeamLeader_id.Leader_id.S_name, 'ChatTitle': i.ChatRoom, 'CrtTime': i.crtTime.date(), 'C_id': i.Course_id.C_id})
+                data.append({'GroupChat_id': i.GroupChat_id, 'TeamLeader_id': i.TeamLeader_id.T_id,
+                             'S_name': i.TeamLeader_id.Leader_id.S_name, 'ChatTitle': i.ChatRoom,
+                             'CrtTime': i.crtTime.date(), 'C_id': i.Course_id.C_id})
         elif teamdesc_id and course_id and not chat_title and not teamleader_id:
             status = HTTP_200_OK
             duplicate = []
@@ -918,12 +1045,15 @@ def team_chat_list(request):
             status = HTTP_200_OK
             select = McyangTeamChat.objects.filter(ChatRoom=chat_title, TeamDesc_id=teamdesc_id)
             for i in select:
-                data.append({'GroupChat_id': i.GroupChat_id, 'TeamLeader_id': i.TeamLeader_id.T_id, 'S_name': i.TeamLeader_id.Leader_id.S_name, 'ChatTitle': i.ChatRoom, 'CrtTime': i.crtTime.date(), 'C_id': i.Course_id.C_id})
+                data.append({'GroupChat_id': i.GroupChat_id, 'TeamLeader_id': i.TeamLeader_id.T_id,
+                             'S_name': i.TeamLeader_id.Leader_id.S_name, 'ChatTitle': i.ChatRoom,
+                             'CrtTime': i.crtTime.date(), 'C_id': i.Course_id.C_id})
         elif teamleader_id and not chat_title and not teamdesc_id and not course_id:
             status = HTTP_200_OK
             select = McyangTeamChat.objects.filter(TeamLeader_id_id=teamleader_id)
             for i in select:
-                data.append({'GroupChat_id': i.GroupChat_id, 'S_name': i.TeamLeader_id.Leader_id.S_name, 'ChatTitle': i.ChatRoom})
+                data.append({'GroupChat_id': i.GroupChat_id, 'S_name': i.TeamLeader_id.Leader_id.S_name,
+                             'ChatTitle': i.ChatRoom})
         else:
             status = HTTP_400_BAD_REQUEST
     else:

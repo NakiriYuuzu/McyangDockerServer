@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Login - for Student",
+			"name": "Login - 學生版",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -21,7 +21,7 @@
 						},
 						{
 							"key": "S_password",
-							"value": "00000",
+							"value": "0000",
 							"type": "text"
 						}
 					]
@@ -41,12 +41,12 @@
 						""
 					]
 				},
-				"description": "request Login"
+				"description": "登入請求 \\[POST\\] :\n\n必填參數:\n\n1. 郵件/帳號 \\[S_email\\]\n2. 密碼 \\[S_password\\]"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Teacher",
+			"name": "Login - 老師版",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -80,12 +80,12 @@
 						""
 					]
 				},
-				"description": "request Login"
+				"description": "登入請求 \\[POST\\] :\n\n必填參數:\n\n1. 郵件/帳號 \\[T_email\\]\n2. 密碼 \\[T_password\\]"
 			},
 			"response": []
 		},
 		{
-			"name": "Course - List",
+			"name": "Course - 課程列表",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -100,7 +100,8 @@
 						{
 							"key": "T_id",
 							"value": "1",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
@@ -119,12 +120,12 @@
 						""
 					]
 				},
-				"description": "\\*   **PICK ONCE**\n    \\*   S_id\n    \\*   T_id"
+				"description": "課程列表 \\[POST\\] :\n\n根據你的需求而選擇如果是老師的話只需要填T_ID就行，以此類推。\n\n必填參數 \\[二選一\\]:\n\n1. 學生ID(資料表ID) \\[S_id\\]\n2. 老師ID(資料表ID) \\[T_id\\]\n    \n\nAPP案例:\n\n老師版:\n\n1. 列出該老師所有課程的畫面\n2. 簽到畫面的下拉選單\n    \n\n學生版:\n\n1. 列出該學生所有課程的畫面"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 3",
+			"name": "Course - 課程創建",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -132,19 +133,25 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "S_email",
-							"value": "studentTest01",
+							"key": "C_name",
+							"value": "程式設計-上",
 							"type": "text"
 						},
 						{
-							"key": "S_password",
-							"value": "0000",
+							"key": "T_id",
+							"value": "1",
 							"type": "text"
+						},
+						{
+							"key": "C_id",
+							"value": "",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/CourseCreate/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -154,36 +161,21 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"CourseCreate",
 						""
 					]
 				},
-				"description": "request Login"
+				"description": "課程創建 \\[POST\\] :\n\n創建課程所使用的API，目前沒在使用。\n\n必填參數 \\[二\\]:\n\n1. 課程名稱 \\[C_name\\]\n2. 老師ID(資料表ID) \\[T_id\\]\n    \n\nAPP案例：\n\n1. 無"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 3",
+			"name": "Sign - 簽到列表",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/CourseSignList/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -193,16 +185,23 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"CourseSignList",
 						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
 					]
 				},
-				"description": "request Login"
+				"description": "課程簽到列表 \\[GET\\] :\n\n非必填參數:\n\n1. 列出所有資料 \\[沒參數\\]\n2. 列出對應ID的資料 \\[?id=\\]"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 3",
+			"name": "Sign - 課程簽到創建/補簽",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -210,19 +209,25 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "S_email",
-							"value": "studentTest01",
+							"key": "C_name",
+							"value": "程式設計-上",
 							"type": "text"
 						},
 						{
-							"key": "S_password",
-							"value": "0000",
+							"key": "T_id",
+							"value": "1",
 							"type": "text"
+						},
+						{
+							"key": "Sign_id",
+							"value": "54",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/SignCreate/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -232,16 +237,16 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"SignCreate",
 						""
 					]
 				},
-				"description": "request Login"
+				"description": "課程簽到 \\[POST\\] :\n\n老師創建簽到或補簽，之後廣播Beacon讓學生進行簽到。\n\n必填參數 \\[創建：2, 補簽: 1\\]:\n\n1. 課程名稱 \\[C_name\\] (創建)\n2. T_ID(資料表ID) \\[T_id\\] (創建)\n3. 課程ID(資料表ID) \\[Sign_id\\] (補簽)\n    \n\nAPP案例:\n\n老師版：\n\n1. 簽到畫面: 創建簽到。\n2. 簽到畫面: 進行補簽。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 3",
+			"name": "Sign - 課程簽到",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -249,19 +254,19 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "S_email",
-							"value": "studentTest01",
+							"key": "S_id",
+							"value": "1",
 							"type": "text"
 						},
 						{
-							"key": "S_password",
-							"value": "0000",
+							"key": "Sign_id",
+							"value": "54",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/CourseSignup/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -271,36 +276,28 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"CourseSignup",
 						""
 					]
 				},
-				"description": "request Login"
+				"description": "課程簽到 \\[POST\\] :\n\n需要老師先創建課程才能簽到！而且每位學生只能簽到一次（每個ID）！\n\n必填參數 \\[二\\]:\n\n1. 學生ID(資料表ID) \\[S_id\\]\n2. 課程ID(資料表ID) \\[Sign_id\\] ex: 參考Course - 簽到列表\n    \n\nAPP案例:\n\n學生版:\n\n1. 簽到畫面，等待老師廣播Beacon進行簽到。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 2",
+			"name": "Sign - 簽到記錄",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
+					"formdata": []
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/SignRecordList/?Sign_id=54",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -310,16 +307,22 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"SignRecordList",
 						""
+					],
+					"query": [
+						{
+							"key": "Sign_id",
+							"value": "54"
+						}
 					]
 				},
-				"description": "request Login"
+				"description": "課程簽到 \\[GET\\] :\n\n顯示簽到的學生。\n\n非必填參數:\n\n1. 簽到ID(資料表ID)\\[?Sign_id=\\]\n    \n\nAPP案例:\n\n老師版：\n\n1. 簽到畫面: 更新已簽到的學生。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 3",
+			"name": "Race - 搶答創建",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -327,19 +330,31 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "S_email",
-							"value": "studentTest01",
+							"key": "C_id",
+							"value": "2",
 							"type": "text"
 						},
 						{
-							"key": "S_password",
-							"value": "0000",
+							"key": "Race_doc",
+							"value": "使用kotlin印出HelloWorld",
 							"type": "text"
+						},
+						{
+							"key": "Race_id",
+							"value": "24",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Status",
+							"value": "1",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/RaceCreate/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -349,36 +364,28 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"RaceCreate",
 						""
 					]
 				},
-				"description": "request Login"
+				"description": "搶答創建 \\[POST\\] :\n\n創建搶答，結束搶答。\n\n必填參數 \\[創建：2, 結束：2\\]:\n\n1. 課程ID(資料表ID) \\[C_id\\] = 創建\n2. 搶答題目 \\[Race_doc\\] = 創建\n3. 搶答ID(資料表ID) \\[Race_id\\] = 結束\n4. Status(0 = 搶答中/ 1 = 結束搶答) = 結束\n    \n\nAPP案例:\n\n老師版:\n\n1. 搶答畫面：寫入題目之後廣播給學生。\n2. 搶答畫面：學生回答對的答案之後結束搶答，就會通知所有學生。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 4",
+			"name": "Race - 學生搶答記錄",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
+					"formdata": []
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/RaceListList/?Race_id=19",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -388,16 +395,27 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"RaceListList",
 						""
+					],
+					"query": [
+						{
+							"key": "S_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "Race_id",
+							"value": "19"
+						}
 					]
 				},
-				"description": "request Login"
+				"description": "學生搶答記錄 \\[GET\\] :\n\n列出所有搶答記錄，列出該學生回答對錯。\n\n必填參數 \\[列出所有：1, 查看對錯：2\\]:\n\n1. 學生ID(資料表ID) \\[S_id\\] = 查看對錯\n2. 搶答ID(資料表ID) \\[Race_id\\] = 列出所有 & 查看對錯\n    \n\nAPP案例:\n\n老師版:\n\n1. 搶答畫面：廣播給學生后同時接收每當同學回答的時候列出該學生。\n    \n\n學生版：\n\n1. 搶答畫面：每當老師關閉搶答之後就會收到回答正確或錯誤。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 3",
+			"name": "Race - 學生搶答創建/批改學生",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -405,19 +423,30 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "S_email",
-							"value": "studentTest01",
+							"key": "Race_id",
+							"value": "26",
 							"type": "text"
 						},
 						{
-							"key": "S_password",
-							"value": "0000",
+							"key": "S_id",
+							"value": "1",
 							"type": "text"
+						},
+						{
+							"key": "S_name",
+							"value": "01測試",
+							"type": "text"
+						},
+						{
+							"key": "Answer",
+							"value": "1",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/RaceListCreate/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -427,36 +456,28 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"RaceListCreate",
 						""
 					]
 				},
-				"description": "request Login"
+				"description": "學生搶答創建/批改學生 \\[POST\\] :\n\n學生搶答，批改學生。\n\n必填參數 \\[學生搶答：2, 批改學生：2\\]:\n\n1. 搶答ID(資料表ID) \\[Race_id\\] = 學生搶答\n2. 學生ID(資料表ID) \\[S_id\\] = 學生搶答/批改學生\n3. 學生名稱 \\[S_name\\] = 學生搶答/批改學生\n4. Answer(0 = 未回答/ 1 = 回答正確) = 批改學生\n    \n\nAPP案例:\n\n老師版:\n\n1. 搶答畫面：批改學生。\n    \n\n學生版：\n\n1. 搶答會面：進行搶答。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 4",
+			"name": "Race - 搶答題目",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
+					"formdata": []
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/RaceAnswerList/?Race_id=26",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -466,16 +487,22 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"RaceAnswerList",
 						""
+					],
+					"query": [
+						{
+							"key": "Race_id",
+							"value": "26"
+						}
 					]
 				},
-				"description": "request Login"
+				"description": "學生搶答記錄 \\[GET\\] :\n\n列出所有搶答記錄，列出該學生回答對錯。\n\n必填參數 \\[列出所有：1, 查看對錯：2\\]:\n\n1. 學生ID(資料表ID) \\[S_id\\] = 查看對錯\n2. 搶答ID(資料表ID) \\[Race_id\\] = 列出所有 & 查看對錯\n    \n\nAPP案例:\n\n老師版:\n\n1. 搶答畫面：廣播給學生后同時接收每當同學回答的時候列出該學生。\n    \n\n學生版：\n\n1. 搶答畫面：每當老師關閉搶答之後就會收到回答正確或錯誤。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 4",
+			"name": "Team - 創建群組",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -483,19 +510,29 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "S_email",
-							"value": "studentTest01",
+							"key": "C_id",
+							"value": "1",
 							"type": "text"
 						},
 						{
-							"key": "S_password",
-							"value": "0000",
+							"key": "Doc",
+							"value": "ABC123",
+							"type": "text"
+						},
+						{
+							"key": "Total",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "Limit",
+							"value": "2",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/TeamDescCreate/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -505,36 +542,28 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"TeamDescCreate",
 						""
 					]
 				},
-				"description": "request Login"
+				"description": "創建群組 \\[POST\\] :\n\n參數：C_id & Doc & Total & Limit = 創建群組。\n\n必填參數:\n\n1. 搶答ID(資料表ID) \\[Race_id\\] = 學生搶答\n2. 學生ID(資料表ID) \\[S_id\\] = 學生搶答/批改學生\n3. 學生名稱 \\[S_name\\] = 學生搶答/批改學生\n4. Answer(0 = 未回答/ 1 = 回答正確) = 批改學生\n    \n\nAPP案例:\n\n老師版:\n\n1. 創建群組。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 4",
+			"name": "Team - 群組列表",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
+					"formdata": []
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/TeamDescList/?C_id=1",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -544,16 +573,32 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"TeamDescList",
 						""
+					],
+					"query": [
+						{
+							"key": "TeamDesc_id",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "C_id",
+							"value": "1"
+						},
+						{
+							"key": "S_id",
+							"value": "1",
+							"disabled": true
+						}
 					]
 				},
-				"description": "request Login"
+				"description": "隊長列表 \\[GET\\] :\n\n參數TeamDesc_id：列出該群組的所有人。\n\n參數C_id：列出該課程所有群組。\n\n參數S_id：列出該學生在的群組，是否是組長。\n\n無必填參數\\[個選一個\\]:\n\n1. 群組 \\[TeamDesc_id\\]\n2. 課程ID(資料庫ID) \\[C_id\\]\n3. 學生ID(資料庫ID)\\[S_id\\]\n    \n\nAPP案例:\n\n老師版:\n\n1. 聊天室畫面：該課程列出所有聊天室。\n    \n\n學生版：\n\n1. 聊天室畫面：列出該學生在的群組，是否是組長。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 4",
+			"name": "Team - 創建群組(隊長)",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -561,19 +606,35 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "S_email",
-							"value": "studentTest01",
+							"key": "S_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "TeamDesc_id",
+							"value": "2",
 							"type": "text"
 						},
 						{
-							"key": "S_password",
-							"value": "0000",
+							"key": "Group_number",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "User",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "TeamLeader_id",
+							"value": "2",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/TeamLeaderCreate/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -583,36 +644,28 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"TeamLeaderCreate",
 						""
 					]
 				},
-				"description": "request Login"
+				"description": "創建群組(隊長) \\[POST\\] :\n\n參數TeamDesc_id & User = 最終確認隊長。\n\n參數TeamLeader_id & TeamDesc_id & Group_number & User = 選擇隊長。\n\n參數 S_id & TeamDesc_id & User = 送出隊長請求。\n\n必填參數:\n\n1. 學生ID(資料表ID) \\[S_id\\]\n2. 群組\\[TeamDesc_id\\]\n3. 批改狀態 \\[Group_number\\]\n4. 是誰 0：老師 1:學生 \\[User\\]\n5. 組長\\[TeamLeader_id\\]\n    \n\nAPP案例:\n\n老師版:\n\n1. 創建群組：選擇隊長。\n2. 創建群組：最終確認隊長。\n    \n\n學生版：\n\n1. 創建群組：送出隊長請求。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 3",
+			"name": "Team - 隊長列表",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
+					"formdata": []
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/TeamLeaderList/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -622,16 +675,28 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"TeamLeaderList",
 						""
+					],
+					"query": [
+						{
+							"key": "TeamDesc_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "TeamLeader_id",
+							"value": "2",
+							"disabled": true
+						}
 					]
 				},
-				"description": "request Login"
+				"description": "隊長列表 \\[GET\\] :\n\n無參數：列出所有資料。\n\n參數TeamDesc_id：列出該團隊的隊長。\n\n參數TeamLeader_id：查詢是否是隊長，是 Status = 200\n\n無必填參數:\n\n1. 群組 \\[TeamDesc_id\\]\n2. 隊長 \\[TeamLeader_id\\]\n    \n\nAPP案例:\n\n老師版:\n\n1. 組成群組畫面：列出隊長。\n    \n\n學生版：\n\n1. 組成群組畫面：查詢被選爲隊長。\n2. 組成群組畫面：列出隊長。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 4",
+			"name": "Team - 創建群組(組員)",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -639,19 +704,36 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "S_email",
-							"value": "studentTest01",
+							"key": "S_id",
+							"value": "1",
 							"type": "text"
 						},
 						{
-							"key": "S_password",
-							"value": "0000",
+							"key": "TeamLeader_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "TeamDesc_id",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Team_number",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "User",
+							"value": "1",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/TeamMemberCreate/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -661,36 +743,28 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"TeamMemberCreate",
 						""
 					]
 				},
-				"description": "request Login"
+				"description": "創建群組(組員)\\[POST\\] :\n\n參數 S_id & TeamLeader_id & User = 送出組員申請。\n\n參數 TeamDesc_id & User = 確認組成群組。\n\n必填參數:\n\n1. 學生ID(資料表ID) \\[S_id\\]\n2. 群組\\[TeamDesc_id\\]\n3. 批改狀態 \\[Team_number\\] 沒在用\n4. 是誰 0：老師 1:學生 \\[User\\]\n5. 組長\\[TeamLeader_id\\]\n    \n\nAPP案例:\n\n老師版:\n\n1. 創建群組：確認組成群組。\n    \n\n學生版：\n\n1. 創建群組：送出組員請求。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 4",
+			"name": "Team - 隊員列表",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
+					"formdata": []
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/TeamMemberList/?TeamLeader_id=2&TeamDesc_id=2",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -700,16 +774,26 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"TeamMemberList",
 						""
+					],
+					"query": [
+						{
+							"key": "TeamLeader_id",
+							"value": "2"
+						},
+						{
+							"key": "TeamDesc_id",
+							"value": "2"
+						}
 					]
 				},
-				"description": "request Login"
+				"description": "隊長列表 \\[GET\\] :\n\n參數TeamDesc_id：列出該群組的隊長和總人數。\n\n參數TeamLeader_id：列出該組長的隊員。\n\n參數TeamDesc_id & TeamLeader_id：列出誰是隊長誰是隊員。\n\n無必填參數:\n\n1. 群組 \\[TeamDesc_id\\]\n2. 隊長 \\[TeamLeader_id\\]\n    \n\nAPP案例:\n\n老師版:\n\n1. 組成群組畫面：列出隊長組員。\n2. 組成群組畫面：列出該群組的隊長和總人數。\n    \n\n學生版：\n\n1. 組成群組畫面：列出誰是隊長誰是隊員。"
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 4",
+			"name": "Chat - 創建聊天室",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -717,19 +801,19 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "S_email",
-							"value": "studentTest01",
+							"key": "TeamDesc_id",
+							"value": "1",
 							"type": "text"
 						},
 						{
-							"key": "S_password",
-							"value": "0000",
+							"key": "Chat_title",
+							"value": "ABC123",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/TeamChatCreate/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -739,36 +823,28 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"TeamChatCreate",
 						""
 					]
 				},
-				"description": "request Login"
+				"description": "創建聊天室 \\[POST\\] :\n\n參數 TeamDesc_id & Chat_title：創建\n\n必填參數:\n\n1. 群組ID \\[TeamDesc_id\\]\n2. 聊天室主題 \\[Chat_title\\]\n    \n\nAPP案例:\n\n老師版:\n\n1. 創建聊天室."
 			},
 			"response": []
 		},
 		{
-			"name": "Login - for Student Copy 4",
+			"name": "Chat - 聊天室列表",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
+					"formdata": []
 				},
 				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
+					"raw": "http://120.110.115.127/api/TeamChatList/",
 					"protocol": "http",
 					"host": [
 						"120",
@@ -778,752 +854,33 @@
 					],
 					"path": [
 						"api",
-						"Login",
+						"TeamChatList",
 						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 2",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
+					],
+					"query": [
 						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
+							"key": "TeamDesc_id",
+							"value": "2",
+							"disabled": true
 						},
 						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
+							"key": "C_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "TeamLeader_id",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "ChatTitle",
+							"value": "test",
+							"disabled": true
 						}
 					]
 				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 3",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 3",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 3",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 3",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
-			},
-			"response": []
-		},
-		{
-			"name": "Login - for Student Copy 4",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "S_email",
-							"value": "studentTest01",
-							"type": "text"
-						},
-						{
-							"key": "S_password",
-							"value": "0000",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://120.110.115.127/api/Login/",
-					"protocol": "http",
-					"host": [
-						"120",
-						"110",
-						"115",
-						"127"
-					],
-					"path": [
-						"api",
-						"Login",
-						""
-					]
-				},
-				"description": "request Login"
+				"description": "隊長列表 \\[GET\\] :\n\n參數TeamDesc_id：列出該聊天室。\n\n參數C_id：列出該課程所有聊天室。\n\n參數TeamDesc_id & C_id：聊天室主題。\n\n參數TeamDesc_id & ChatTitle：列出詳細資訊的聊天室。\n\n參數 TeamLeader_id：列出該隊長所在的聊天室。\n\n無必填參數\\[個選一個\\]:\n\n1. 群組 \\[TeamDesc_id\\]\n2. 課程ID(資料庫ID) \\[C_id\\]\n3. 隊長 \\[TeamLeader_id\\]\n4. 聊天室主題 \\[ChatTitle\\]"
 			},
 			"response": []
 		}
