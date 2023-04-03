@@ -22,53 +22,28 @@
 ---
 ## 3. 项目部署
 ```bash
-# 1. 安装docker
-#!/bin/bash
-
-# 更新資源
-sudo apt-get update
-
-# 安裝必要的一些系統工具
-sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
-
-# 添加Docker的官方GPG密钥
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-echo \
-  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-# 更新資源
-sudo apt-get update
-
-# 安裝docker
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-
-# 添加docker用户组
-sudo usermod -aG docker $USER
-
-# 2. 安装docker-compose
-sudo apt-get install -y docker-compose
-
-# 3. Git clone项目
+# 1. Git clone项目
 git clone https://github.com/NakiriYuuzu/McyangDockerServer.git
 
-# 4. 进入项目目录
-cd McyangDockerServer
+# 2. 安装 docker & docker-compose
+cd McyangDockerServer/documentation/bash
+sudo chmod +x install_docker.sh
+./install_docker.sh
 
-# 5. 启动项目
-docker-compose up --build    # 启动项目與視窗
-docker-compose up -d --build # 启动项目與背景執行
+# 3. 进入项目目录
+cd ..
+cd ..
 
-# 6. 停止项目
-docker-compose down
+# 4. Docker-Compose 指令
+docker-compose up --build                                         # 启动项目與視窗
+docker-compose up -d --build                                      # 启动项目與背景執行
 
-# 設定 django Admin
-docker-compose exec web python manage.py createsuperuser
+docker-compose down                                               # 停止项目
 
-# Docker 其他指令
-docker-compose exec [請看docker-compose.yml 内容有 db 和 web] bash # 進入容器
-docker-compose ps # 查看容器狀態
+docker-compose exec web python manage.py createsuperuser          # 創建超級用戶
+
+docker-compose exec [請看docker-compose.yml 内容有 db 和 web] bash  # 進入容器
+docker-compose ps                                                # 查看容器狀態
 ```
 
 ### 如啓動失敗，請在啓動一次
