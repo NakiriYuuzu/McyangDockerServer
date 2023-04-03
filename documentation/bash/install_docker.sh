@@ -26,18 +26,17 @@ then
     # Add the current user to the docker group so that you don't have to use sudo for docker commands
     sudo usermod -aG docker $USER
 
-    echo "\e[36mDocker has been installed.\e[36m"
+    echo -e "\e[36mDocker has been installed.\e[36m"
   else
     echo -e "\e[33mDocker is already installed. Skipping installation.\e[33m"
 fi
 
 if ! command -v docker-compose &> /dev/null
 then
-    echo "\e[31mDocker Compose could not be found. Installing Docker Compose...\e[31m"
+    echo -e "\e[31mDocker Compose could not be found. Installing Docker Compose...\e[31m"
     sudo apt-get install docker-compose -y
-    echo "\e[36mDocker Compose has been installed.\e[36m"
+    echo -e "\e[36mDocker Compose has been installed.\e[36m"
+    echo -e "\e[34mYou may need to restart the server for the changes to take effect.\e[34m"
 else
     echo -e "\e[33mDocker Compose is already installed. Skipping installation.\e[33m"
 fi
-
-# Install Docker Compose
