@@ -25,14 +25,17 @@
 # 1. Git clone项目
 git clone https://github.com/NakiriYuuzu/McyangDockerServer.git
 
-# 2. 进入项目目录
+# 2. 安装 docker & docker-compose
+sudo chmod +x McyangDockerServer/documentation/bash/install_docker.sh
+McyangDockerServer/documentation/bash/./install_docker.sh
+
+# 3. 重新啓動
+sudo reboot
+
+# 4. 进入项目目录
 cd McyangDockerServer
 
-# 3. 安装 docker & docker-compose
-sudo chmod +x documentation/bash/install_docker.sh
-documentation/bash/./install_docker.sh
-
-# 4. Docker-Compose 指令
+# 5. Docker-Compose 指令
 docker-compose up --build                                         # 启动项目與視窗
 docker-compose up -d --build                                      # 启动项目與背景執行
 
