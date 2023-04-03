@@ -2,7 +2,7 @@
 
 if ! command -v docker &> /dev/null
 then
-    echo "Docker could not be found. Installing Docker..."
+    echo -e "\e[31mDocker could not be found. Installing Docker...\e[31m"
     # Update the package database
     sudo apt-get update
 
@@ -26,18 +26,18 @@ then
     # Add the current user to the docker group so that you don't have to use sudo for docker commands
     sudo usermod -aG docker $USER
 
-    echo "Docker has been installed."
+    echo "\e[36mDocker has been installed.\e[36m"
   else
-    echo "Docker is already installed. Skipping installation."
+    echo -e "\e[33mDocker is already installed. Skipping installation.\e[33m"
 fi
 
 if ! command -v docker-compose &> /dev/null
 then
-    echo "Docker Compose could not be found. Installing Docker Compose..."
+    echo "\e[31mDocker Compose could not be found. Installing Docker Compose...\e[31m"
     sudo apt-get install docker-compose -y
-    echo "Docker Compose has been installed."
+    echo "\e[36mDocker Compose has been installed.\e[36m"
 else
-    echo "Docker Compose is already installed. Skipping installation."
+    echo -e "\e[33mDocker Compose is already installed. Skipping installation.\e[33m"
 fi
 
 # Install Docker Compose
