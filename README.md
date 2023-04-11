@@ -12,7 +12,9 @@
 /documentation/doc/html/index.html
 
 ## 1.2 APP 畫面
-
+https://www.youtube.com/watch?v=iIz-snOuN9g
+https://www.youtube.com/watch?v=zx3Sb4nhOCA
+https://www.youtube.com/watch?v=2g1UoQAVO0U
 
 ---
 ## 2. 项目结构
