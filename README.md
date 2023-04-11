@@ -7,9 +7,12 @@
 
 老師端APP: https://github.com/NakiriYuuzu/New_McyangTeacher
 
-## 1.1. App Doc
+## 1.1 App Doc
 請參考 [点击访问 Documentation](documentation/doc/html/index.html)
 /documentation/doc/html/index.html
+
+## 1.2 APP 畫面
+
 
 ---
 ## 2. 项目结构
