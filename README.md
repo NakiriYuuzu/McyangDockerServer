@@ -7,6 +7,8 @@
 
 老師端APP: https://github.com/NakiriYuuzu/New_McyangTeacher
 
+建立APK：https://developer.android.com/studio/run?hl=zh-tw
+
 ## 1.1 App Doc
 請參考 [点击访问 Documentation](documentation/doc/html/index.html)
 /documentation/doc/html/index.html
